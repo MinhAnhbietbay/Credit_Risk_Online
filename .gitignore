@@ -1,0 +1,11 @@
+credit_risk/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/*.zip
+data/home-credit-default-risk/
+data/processed/
+outputs/models/
+outputs/oof/
+.env

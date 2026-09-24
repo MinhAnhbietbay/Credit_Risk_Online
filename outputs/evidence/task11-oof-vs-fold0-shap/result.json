@@ -1,0 +1,17 @@
+{
+  "overlap_top20": 16,
+  "spearman": 0.9464135021097048,
+  "max_abs_diff": 0.021586596228856662,
+  "only_in_oof_top20": [
+    "BUREAU_AMT_CREDIT_SUM_DEBT_MEAN",
+    "OCCUPATION_TYPE",
+    "ORGANIZATION_TYPE",
+    "PREV_PRODUCT_COMBINATION_MODE"
+  ],
+  "only_in_fold0_top20": [
+    "AMT_CREDIT",
+    "INST_AMT_INSTALMENT_SUM",
+    "INST_PAYMENT_DIFF_MEAN",
+    "PREV_DAYS_LAST_DUE_1ST_VERSION_SUM"
+  ]
+}

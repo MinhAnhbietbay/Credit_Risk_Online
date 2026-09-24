@@ -1,0 +1,63 @@
+{
+  "warning": "Phân tích độ nhạy, KHÔNG phải dự báo: hệ số kịch bản là giả định về mức gánh nặng trả nợ, không có quan hệ nhân quả nào giữa biến vĩ mô và vỡ nợ được kiểm chứng trên dữ liệu này.",
+  "burden_measure": "AMT_ANNUITY / AMT_CREDIT (= feature CREDIT_TERM)",
+  "behaviour_columns": [
+    "INST_LATE_RATIO",
+    "INST_DPD_MEAN",
+    "INST_DPD_STD",
+    "POS_SK_DPD_DEF_MEAN",
+    "CC_UTILIZATION_MEAN",
+    "CC_UTILIZATION_MAX"
+  ],
+  "doc": "docs/ph1-co-so-kich-ban-stress-test.md",
+  "derived_from": {
+    "n_rows": 245998,
+    "quantiles": {
+      "0.5": 0.05,
+      "0.75": 0.06391,
+      "0.9": 0.094982
+    }
+  },
+  "scenarios": [
+    {
+      "name": "co_so",
+      "annuity_multiplier": 1.0,
+      "channel": "chi_phi",
+      "description": "giữ nguyên gánh nặng trả nợ hiện tại"
+    },
+    {
+      "name": "chi_phi_bat_loi",
+      "channel": "chi_phi",
+      "annuity_multiplier": 1.2782,
+      "description": "chi phí trả nợ bằng nhóm 25% nặng nhất của chính danh mục",
+      "quantile": 0.75,
+      "reference_quantile": 0.5
+    },
+    {
+      "name": "chi_phi_rat_bat_loi",
+      "channel": "chi_phi",
+      "annuity_multiplier": 1.8996,
+      "description": "chi phí trả nợ bằng nhóm 10% nặng nhất của chính danh mục",
+      "quantile": 0.9,
+      "reference_quantile": 0.5
+    },
+    {
+      "name": "hanh_vi_bat_loi",
+      "channel": "hanh_vi",
+      "annuity_multiplier": 1.0,
+      "percentile_shift": 0.25,
+      "description": "hành vi trả nợ xấu đi bằng nhóm 25% nặng nhất của chính danh mục",
+      "quantile": 0.75,
+      "reference_quantile": 0.5
+    },
+    {
+      "name": "hanh_vi_rat_bat_loi",
+      "channel": "hanh_vi",
+      "annuity_multiplier": 1.0,
+      "percentile_shift": 0.4,
+      "description": "hành vi trả nợ xấu đi bằng nhóm 10% nặng nhất của chính danh mục",
+      "quantile": 0.9,
+      "reference_quantile": 0.5
+    }
+  ]
+}

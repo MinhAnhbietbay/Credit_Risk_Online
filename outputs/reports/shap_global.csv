@@ -1,0 +1,81 @@
+feature,mean_abs_shap,mo_ta
+EXT_SOURCE_MEAN,0.36649846048179935,trung bình 3 điểm tín dụng nguồn ngoài (càng cao càng tốt)
+DAYS_EMPLOYED,0.12878396602878547,số ngày kể từ khi vào làm công việc hiện tại (âm = quá khứ)
+PREV_DAYS_LAST_DUE_1ST_VERSION_MAX,0.11884156920597667,"đơn vay trước ở Home Credit: số ngày đến kỳ trả cuối theo lịch ký ban đầu (lệch nhiều so với thực tế = trả sớm/trễ), lớn nhất"
+CREDIT_TERM,0.11718603944229554,tiền trả mỗi kỳ chia cho tổng khoản vay (nghịch đảo số kỳ ước tính)
+NAME_EDUCATION_TYPE,0.11010342993286056,trình độ học vấn cao nhất
+AMT_ANNUITY,0.10609863061699489,số tiền phải trả mỗi kỳ
+EXT_SOURCE_1,0.09534447270893542,"điểm tín dụng từ nguồn ngoài số 1 (0-1, càng cao càng tốt)"
+EXT_SOURCE_MAX,0.08308110179330083,điểm tín dụng nguồn ngoài cao nhất trong 3 nguồn
+EXT_SOURCE_MIN,0.08264901349367906,điểm tín dụng nguồn ngoài thấp nhất trong 3 nguồn
+INST_LATE_RATIO,0.08077213237577267,tỉ lệ kỳ trả góp bị trễ hạn trên tổng số kỳ
+DAYS_BIRTH,0.0682614033118629,số ngày tính đến ngày sinh (âm; càng âm càng lớn tuổi)
+EXT_SOURCE_3,0.06573926191771995,"điểm tín dụng từ nguồn ngoài số 3 (0-1, càng cao càng tốt)"
+OCCUPATION_TYPE,0.06079698363626539,nghề nghiệp
+PREV_DAYS_LAST_DUE_MAX,0.053759616051912894,"đơn vay trước ở Home Credit: số ngày đến kỳ trả cuối theo hợp đồng (âm = đã qua), lớn nhất"
+OWN_CAR_AGE,0.05372915442168494,tuổi xe ô tô khách sở hữu (năm)
+BUREAU_AMT_CREDIT_SUM_DEBT_MEAN,0.05342418565625289,"CIC: dư nợ còn lại, trung bình"
+PREV_PRODUCT_COMBINATION_MODE,0.05327268190214296,"đơn vay trước ở Home Credit: gói sản phẩm vay, giá trị hay gặp nhất"
+PREV_REFUSED_RATIO,0.05160381389089468,tỉ lệ đơn vay trước bị từ chối trên tổng số đơn
+ORGANIZATION_TYPE,0.04937855856753868,loại tổ chức nơi khách làm việc
+PREV_APPROVED_AMT_ANNUITY_SUM,0.04786663077847607,"đơn vay trước ở Home Credit: số tiền phải trả mỗi kỳ, tính trên đơn đã duyệt, tổng"
+INST_AMT_INSTALMENT_SUM,0.046268138357142,"lịch sử trả góp: số tiền phải trả theo lịch của một kỳ, tổng"
+INST_PAYMENT_DIFF_MEAN,0.045267327664400246,"lịch sử trả góp: phần thiếu của kỳ = số phải trả trừ số thực trả (dương = trả thiếu), trung bình"
+INST_DAYS_ENTRY_PAYMENT_MAX,0.04521353614415876,"lịch sử trả góp: số ngày kể từ lúc khách thực trả (âm = quá khứ), lớn nhất"
+AMT_CREDIT,0.04371883302728657,số tiền vay được duyệt
+PREV_APP_CREDIT_RATIO_MIN,0.04339542989596414,"đơn vay trước ở Home Credit: tỉ lệ số tiền khách xin vay trên số tiền thực được duyệt (>1 = bị cắt bớt), nhỏ nhất"
+BUREAU_ACTIVE_AMT_CREDIT_SUM_MIN,0.042573266167557494,"CIC: hạn mức/tổng dư nợ gốc của khoản vay, tính trên khoản còn dư nợ, nhỏ nhất"
+EXT_SOURCE_2,0.041417973365303715,"điểm tín dụng từ nguồn ngoài số 2 (0-1, càng cao càng tốt)"
+BUREAU_DAYS_ENDDATE_FACT_MAX,0.040726418753613935,"CIC: số ngày kể từ khi tất toán thực tế (âm = đã tất toán), lớn nhất"
+ANNUITY_INCOME_RATIO,0.04032694717209508,tiền trả mỗi kỳ chiếm bao nhiêu phần thu nhập
+DAYS_ID_PUBLISH,0.03807833210752108,số ngày kể từ lần đổi giấy tờ tùy thân gần nhất (âm = quá khứ)
+PREV_CNT_PAYMENT_MEAN,0.03798031188829817,"đơn vay trước ở Home Credit: số kỳ trả của khoản vay trước, trung bình"
+CC_CNT_DRAWINGS_ATM_CURRENT_MEAN,0.03706035206692574,"thẻ tín dụng: số lần rút tiền mặt ở ATM trong tháng, trung bình"
+PREV_DAYS_LAST_DUE_1ST_VERSION_SUM,0.03554902312182201,"đơn vay trước ở Home Credit: số ngày đến kỳ trả cuối theo lịch ký ban đầu (lệch nhiều so với thực tế = trả sớm/trễ), tổng"
+INST_DPD_MEAN,0.0340389974101677,"lịch sử trả góp: số ngày trả trễ so với hạn (0 nếu không trễ), trung bình"
+YEARS_BEGINEXPLUATATION_AVG,0.03312912782044093,"tuổi toà nhà nơi khách ở, chuẩn hóa 0-1 (cao = toà nhà mới đưa vào sử dụng gần đây)"
+PREV_APPROVED_AMT_DOWN_PAYMENT_SUM,0.03304685841724957,"đơn vay trước ở Home Credit: số tiền trả trước, tính trên đơn đã duyệt, tổng"
+BUREAU_ACTIVE_AMT_CREDIT_SUM_DEBT_MIN,0.0328462852240141,"CIC: dư nợ còn lại, tính trên khoản còn dư nợ, nhỏ nhất"
+PREV_REFUSED_DAYS_DECISION_MAX,0.03272810483182885,"đơn vay trước ở Home Credit: số ngày kể từ khi có quyết định cho đơn vay trước (âm = quá khứ), tính trên đơn bị từ chối, lớn nhất"
+INST_DPD_STD,0.03134007002511691,"lịch sử trả góp: số ngày trả trễ so với hạn (0 nếu không trễ), độ lệch chuẩn"
+PREV_APPROVED_AMT_ANNUITY_MEAN,0.03133372406680426,"đơn vay trước ở Home Credit: số tiền phải trả mỗi kỳ, tính trên đơn đã duyệt, trung bình"
+POS_MONTHS_BALANCE_SIZE,0.030308820657696748,"khoản trả góp POS/tiền mặt: số tháng tính ngược từ thời điểm nộp đơn (âm = quá khứ), số bản ghi"
+PREV_APPROVED_AMT_APPLICATION_SUM,0.029490243431224,"đơn vay trước ở Home Credit: số tiền khách xin vay, tính trên đơn đã duyệt, tổng"
+BUREAU_AMT_CREDIT_SUM_MEAN,0.0291940312610754,"CIC: hạn mức/tổng dư nợ gốc của khoản vay, trung bình"
+CC_UTILIZATION_MAX,0.028781116490607973,"thẻ tín dụng: tỉ lệ sử dụng hạn mức thẻ = dư nợ / hạn mức, lớn nhất"
+PREV_HOUR_APPR_PROCESS_START_MEAN,0.02835233755436845,"đơn vay trước ở Home Credit: giờ trong ngày lúc nộp đơn, trung bình"
+BUREAU_AMT_CREDIT_SUM_SUM,0.028078266811058746,"CIC: hạn mức/tổng dư nợ gốc của khoản vay, tổng"
+BUREAU_ACTIVE_DAYS_CREDIT_ENDDATE_MAX,0.027252192578253398,"CIC: số ngày đến hạn tất toán theo hợp đồng (dương = còn hạn ở tương lai), tính trên khoản còn dư nợ, lớn nhất"
+PREV_APP_CREDIT_RATIO_MEAN,0.026701092785651876,"đơn vay trước ở Home Credit: tỉ lệ số tiền khách xin vay trên số tiền thực được duyệt (>1 = bị cắt bớt), trung bình"
+REGION_POPULATION_RELATIVE,0.026688066835501945,mật độ dân cư khu vực khách sinh sống (đã chuẩn hóa)
+BUREAU_ACTIVE_DAYS_CREDIT_ENDDATE_MIN,0.025455173120498456,"CIC: số ngày đến hạn tất toán theo hợp đồng (dương = còn hạn ở tương lai), tính trên khoản còn dư nợ, nhỏ nhất"
+PREV_DAYS_DECISION_MIN,0.025046678851396845,"đơn vay trước ở Home Credit: số ngày kể từ khi có quyết định cho đơn vay trước (âm = quá khứ), nhỏ nhất"
+INST_DBD_SUM,0.024886264607318208,"lịch sử trả góp: số ngày trả sớm trước hạn (0 nếu không sớm), tổng"
+BUREAU_ACTIVE_DAYS_CREDIT_MAX,0.024436491496392515,"CIC: số ngày kể từ khi mở khoản vay ở tổ chức khác (âm = quá khứ), tính trên khoản còn dư nợ, lớn nhất"
+BUREAU_DAYS_CREDIT_ENDDATE_MAX,0.024397191998608698,"CIC: số ngày đến hạn tất toán theo hợp đồng (dương = còn hạn ở tương lai), lớn nhất"
+DAYS_REGISTRATION,0.0243562390290948,số ngày kể từ lần thay đổi đăng ký cư trú gần nhất (âm = quá khứ)
+BUREAU_DAYS_CREDIT_MAX,0.022603015131762782,"CIC: số ngày kể từ khi mở khoản vay ở tổ chức khác (âm = quá khứ), lớn nhất"
+BUREAU_AMT_CREDIT_SUM_MAX,0.02219584882487814,"CIC: hạn mức/tổng dư nợ gốc của khoản vay, lớn nhất"
+PREV_AMT_DOWN_PAYMENT_SUM,0.02212886615467783,"đơn vay trước ở Home Credit: số tiền trả trước, tổng"
+CC_CNT_DRAWINGS_CURRENT_MEAN,0.02208045787939687,"thẻ tín dụng: tổng số lần rút/chi tiêu trong tháng, trung bình"
+BUREAU_AMT_CREDIT_MAX_OVERDUE_SUM,0.020705642761988382,"CIC: số tiền quá hạn cao nhất từng ghi nhận, tổng"
+DAYS_LAST_PHONE_CHANGE,0.020667187455856346,số ngày kể từ lần đổi số điện thoại gần nhất (âm = quá khứ)
+INST_DBD_STD,0.019905658675710605,"lịch sử trả góp: số ngày trả sớm trước hạn (0 nếu không sớm), độ lệch chuẩn"
+INST_NUM_INSTALMENT_NUMBER_MAX,0.019062980117217822,"lịch sử trả góp: số thứ tự kỳ trả, lớn nhất"
+BUREAU_ACTIVE_DAYS_CREDIT_ENDDATE_MEAN,0.01817971051890173,"CIC: số ngày đến hạn tất toán theo hợp đồng (dương = còn hạn ở tương lai), tính trên khoản còn dư nợ, trung bình"
+BUREAU_ACTIVE_RATIO,0.01769515235829623,CIC: tỉ lệ khoản vay còn dư nợ trên tổng số khoản vay đã ghi nhận
+INST_AMT_INSTALMENT_MAX,0.01731275208068336,"lịch sử trả góp: số tiền phải trả theo lịch của một kỳ, lớn nhất"
+PREV_DAYS_LAST_DUE_1ST_VERSION_MEAN,0.01714493182884095,"đơn vay trước ở Home Credit: số ngày đến kỳ trả cuối theo lịch ký ban đầu (lệch nhiều so với thực tế = trả sớm/trễ), trung bình"
+POS_SK_DPD_DEF_MEAN,0.016968937243837637,"khoản trả góp POS/tiền mặt: số ngày quá hạn trong tháng, bỏ qua các khoản trễ không đáng kể, trung bình"
+INST_PAYMENT_PERC_MEAN,0.01690836445564444,"lịch sử trả góp: tỉ lệ thực trả trên số phải trả của kỳ (1.0 = trả đủ), trung bình"
+BUREAU_CREDIT_ACTIVE_ACTIVE_COUNT,0.016089402344466458,"CIC: khoản vay đang ở trạng thái còn dư nợ, số lượng"
+BUREAU_DAYS_CREDIT_MEAN,0.014245593778005433,"CIC: số ngày kể từ khi mở khoản vay ở tổ chức khác (âm = quá khứ), trung bình"
+BUREAU_ACTIVE_AMT_CREDIT_MAX_OVERDUE_SUM,0.014007873609156396,"CIC: số tiền quá hạn cao nhất từng ghi nhận, tính trên khoản còn dư nợ, tổng"
+CC_UTILIZATION_MEAN,0.013927053780102299,"thẻ tín dụng: tỉ lệ sử dụng hạn mức thẻ = dư nợ / hạn mức, trung bình"
+INST_AMT_INSTALMENT_MEAN,0.013421317250620266,"lịch sử trả góp: số tiền phải trả theo lịch của một kỳ, trung bình"
+CREDIT_INCOME_RATIO,0.013380140791825548,số tiền vay gấp bao nhiêu lần thu nhập năm
+BUREAU_ACTIVE_DAYS_CREDIT_MEAN,0.009362806053215674,"CIC: số ngày kể từ khi mở khoản vay ở tổ chức khác (âm = quá khứ), tính trên khoản còn dư nợ, trung bình"
+EXT_SOURCE_STD,0.00830297576987843,mức chênh lệch giữa 3 điểm tín dụng nguồn ngoài
+INST_DBD_MAX,0.007642966065916433,"lịch sử trả góp: số ngày trả sớm trước hạn (0 nếu không sớm), lớn nhất"
+PREV_REFUSED_APP_CREDIT_RATIO_MIN,0.006502765537341726,"đơn vay trước ở Home Credit: tỉ lệ số tiền khách xin vay trên số tiền thực được duyệt (>1 = bị cắt bớt), tính trên đơn bị từ chối, nhỏ nhất"
+INST_DBD_MEAN,0.00560090353122734,"lịch sử trả góp: số ngày trả sớm trước hạn (0 nếu không sớm), trung bình"

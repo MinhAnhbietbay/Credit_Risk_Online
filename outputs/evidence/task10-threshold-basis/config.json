@@ -1,0 +1,34 @@
+{
+ "method": "flag_rate",
+ "flag_rate": 0.2189732413581135,
+ "refusal": {
+  "n_decided": 1327459,
+  "refusal_rate": 0.2189732413581135,
+  "refusal_rate_by_type": {
+   "Cash loans": 0.3467901719655233,
+   "Consumer loans": 0.10715380065701804,
+   "Revolving loans": 0.3362682868877499,
+   "XNA": 1.0
+  },
+  "definition": "Refused / (Approved + Refused) tr\u00ean previous_application"
+ },
+ "interest_ratio": {
+  "n_prev_loans": 939002,
+  "r_median_all": 0.23372046768515886,
+  "r_by_type": {
+   "Cash loans": 0.4135404712166486,
+   "Consumer loans": 0.20419936373276792
+  },
+  "r_for_application": {
+   "Cash loans": 0.4135404712166486,
+   "Revolving loans": 0.23372046768515886
+  },
+  "definition": "r = AMT_ANNUITY*CNT_PAYMENT/AMT_CREDIT - 1, previous_application Approved (Cash+Consumer)"
+ },
+ "lgd_proxy": {
+  "value": 0.36,
+  "n": 48,
+  "definition": "1 \u2212 \u0111\u00e3 tr\u1ea3/ph\u1ea3i tr\u1ea3 c\u1ee7a kho\u1ea3n vay c\u0169 k\u1ebft th\u00fac Demand/Amortized debt",
+  "status": "ch\u1ec9 \u0111\u1ec3 tham kh\u1ea3o, KH\u00d4NG d\u00f9ng l\u00e0m ng\u01b0\u1ee1ng ch\u00ednh (n qu\u00e1 nh\u1ecf, proxy \u2260 LGD r\u00f2ng)"
+ }
+}

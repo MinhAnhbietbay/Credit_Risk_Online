@@ -1,0 +1,11 @@
+{
+ "data": "OOF 5-fold tr\u00ean ph\u1ea7n CV 80% (Task 8), holdout kh\u00f4ng ch\u1ea1m",
+ "auc_weights": {
+  "catboost": 0.28024256535405045,
+  "lightgbm": 0.2795454167552156,
+  "logistic_regression": 0.2664533811694685,
+  "random_forest": 0.2616705391318299,
+  "xgboost": 0.2782798944317957
+ },
+ "stacking": "LogisticRegression(C=1) tr\u00ean logit(OOF), CV l\u1ed3ng 5-fold"
+}

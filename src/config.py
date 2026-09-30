@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
@@ -20,3 +21,10 @@ for d in [PROCESSED_DIR, MODELS_DIR, PLOTS_DIR, REPORTS_DIR, OOF_DIR, EVIDENCE_D
 RANDOM_SEED = 42
 TEST_SIZE = 0.2
 CV_FOLDS = 5
+
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_PORT = os.getenv("DB_PORT", "5432")
+DB_NAME = os.getenv("DB_NAME", "credit_risk")
+DB_USER = os.getenv("DB_USER", "postgres")
+DB_PASS = os.getenv("DB_PASS", "postgres")
+DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"

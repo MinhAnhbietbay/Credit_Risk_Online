@@ -9,3 +9,21 @@ data/processed/
 outputs/models/
 outputs/oof/
 .env
+# Frontend
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+
+# Biến môi trường (giữ lại file mẫu .env.example)
+.env.*
+!.env.example
+
+# Khác
+*.log
+.ipynb_checkpoints/
+.DS_Store
+
+# Kết quả sinh ra từ scripts
+outputs/plots/
+outputs/reports/
+outputs/evidence/

@@ -1,0 +1,15 @@
+# Image backend chỉ cần requirements.txt; src/scripts/data/outputs được mount qua compose
+credit_risk/
+.venv/
+.git/
+data/
+outputs/
+notebooks/
+docs/
+tests/
+frontend/node_modules/
+frontend/dist/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env

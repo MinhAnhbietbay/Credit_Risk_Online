@@ -1,1 +1,0 @@
-**Số:** trùng 16/20 feature ở top-20, Spearman 0.9464, lệch lớn nhất 0.0216 log-odds.

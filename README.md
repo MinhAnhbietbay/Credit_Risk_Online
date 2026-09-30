@@ -16,6 +16,29 @@ pip install -r requirements.txt
 
 Tải `data/home-credit-default-risk.zip` (dataset gốc từ Kaggle) vào thư mục `data/` trước khi chạy bước 1.
 
+## Chạy web (FastAPI + React) bằng Docker
+
+Điều kiện: đã chạy xong pipeline offline, tức là đã có `data/processed/`, `outputs/models/` và
+`outputs/reports/` (`shap_global.csv`, `model_comparison.csv`)
+
+```bash
+# 1. Bật PostgreSQL + API (cổng 8000) + web (cổng 5173)
+docker compose -f infra/docker-compose.yml up -d --build
+
+# 2. Nạp hồ sơ vào DB (~100 giây) và tạo dữ liệu cho form nhập tay (chỉ cần chạy lần đầu)
+docker compose -f infra/docker-compose.yml exec api python scripts/ph1_db_seed.py --reset
+docker compose -f infra/docker-compose.yml exec api python scripts/ph1_web_assets.py
+```
+
+- Web: http://localhost:5173 · Tài liệu API: http://localhost:8000/docs
+- PostgreSQL mở ra máy ở cổng 5433 (user/mật khẩu `postgres`, DB `credit_risk`).
+- Tắt: `docker compose -f infra/docker-compose.yml down` (giữ dữ liệu) hoặc thêm `-v` để xoá cả DB.
+- `--reset` xoá sạch dữ liệu trong DB trước khi nạp lại.
+- Mã nguồn `src/`, `scripts/`, `frontend/` được mount vào container nên sửa code là tự nạp lại, không cần build lại.
+- Nếu cổng 8000, 5173 hoặc 5433 đang bị chiếm (ví dụ project khác cũng chạy Docker), hãy tắt project đó trước.
+
+Nguồn gốc 80 feature của model: [docs/ph1-nguon-goc-80-feature.md](docs/ph1-nguon-goc-80-feature.md).
+
 ## Cấu trúc thư mục
 
 ```

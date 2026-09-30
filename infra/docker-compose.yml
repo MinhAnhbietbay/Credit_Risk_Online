@@ -1,0 +1,58 @@
+# Chạy từ thư mục gốc project:
+#   docker compose -f infra/docker-compose.yml up -d --build
+#   Web: http://localhost:5173    API docs: http://localhost:8000/docs
+# Đường dẫn trong file này tính từ thư mục infra/.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ph1_postgres
+    environment:
+      POSTGRES_DB: credit_risk
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - ph1_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d credit_risk"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: credit_risk_api
+    environment:
+      DB_HOST: postgres   # trong mạng compose dùng port nội bộ 5432, không phải 5433
+      DB_PORT: "5432"
+      FRONTEND_ORIGIN: http://localhost:5173
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../src:/app/src
+      - ../scripts:/app/scripts
+      - ../data:/app/data
+      - ../outputs:/app/outputs
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  web:
+    build: ../frontend
+    container_name: credit_risk_web
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000
+    ports:
+      - "5173:5173"
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+    depends_on:
+      - api
+
+volumes:
+  ph1_pgdata:

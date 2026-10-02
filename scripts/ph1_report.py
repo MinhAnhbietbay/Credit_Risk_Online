@@ -1,8 +1,8 @@
-"""báo cáo so sánh 5 model + ensemble, và chấm holdout đúng một lần.
+"""báo cáo so sánh 5 model + ensemble, và chấm holdout **đúng một lần**.
 
     python scripts/ph1_report.py
 
-Ngưỡng (xem `scripts/ph1_evidence_threshold_basis.py`): chính = chặn đúng tỉ lệ từ chối lịch sử của Home Credit
+Ngưỡng (xem `scripts/ph1_evidence_threshold_basis.py`): **chính** = chặn đúng tỉ lệ từ chối lịch sử của Home Credit
 (`threshold_basis.json`, ~21.9%) — áp cùng tỉ lệ chặn cho mọi model nên P/R/F1 so sánh được; **đối chiếu** = KS/Youden.
 Đọc OOF (Task 8/9), `cv_results.csv`, model fold + ensemble. Ghi:
 - `outputs/reports/model_comparison.md` — bảng 6 dòng (AUC mean±std, KS, P/R/F1 tại ngưỡng, Brier, giờ train)
@@ -12,6 +12,7 @@ Ngưỡng (xem `scripts/ph1_evidence_threshold_basis.py`): chính = chặn đún
 - `outputs/plots/ph1_roc.png`, `ph1_calibration.png`, `ph1_score_distribution.png`, `ph1_threshold_tradeoff.png`
 - `outputs/oof/holdout_preds.npz` — dự đoán holdout của từng member + ensemble (cho SHAP/stress/dashboard sau)
 """
+
 from __future__ import annotations
 
 import argparse
@@ -36,6 +37,7 @@ from src.ph1_credit_risk.evaluation import metrics as mt  # noqa: E402
 from src.ph1_credit_risk.features.selection import FEATURES_TRAIN_PATH, PROTECTED, SELECTED_FEATURES_PATH  # noqa: E402
 from src.ph1_credit_risk.modeling import registry as rg  # noqa: E402
 from src.ph1_credit_risk.modeling.cv import OOF_DIR  # noqa: E402
+from src.ph1_credit_risk.modeling.scoring import predict_ensemble  # noqa: E402
 from src.ph1_credit_risk.modeling.split import load_holdout_ids  # noqa: E402
 
 ENSEMBLE_NAME = "ensemble"
@@ -48,7 +50,6 @@ COLORS = {"catboost": "#2a78d6", "lightgbm": "#eb6834", "xgboost": "#1baf7a",
           "logistic_regression": "#eda100", "random_forest": "#e87ba4", ENSEMBLE_NAME: "#008300"}
 STYLE = dict(lw=2)
 
-
 def _ax_style(ax):
     ax.grid(True, color="#e6e5e1", lw=0.8)
     ax.set_axisbelow(True)
@@ -57,13 +58,13 @@ def _ax_style(ax):
     for s in ("left", "bottom"):
         ax.spines[s].set_color("#c3c2b7")
 
-
 def load_oofs() -> tuple[dict[str, np.ndarray], np.ndarray]:
     y = np.load(OOF_DIR / "cv_target.npy")
     names = rg.list_models() + [ENSEMBLE_NAME]
     return {m: np.load(OOF_DIR / f"{m}_oof.npy") for m in names}, y
 
 def comparison_table(oofs, y, cv, flag_rate) -> pd.DataFrame:
+    """Mỗi model chấm tại ngưỡng chặn đúng `flag_rate` hồ sơ điểm cao nhất của chính nó -> cùng tỉ lệ chặn, so được P/R."""
     rows = []
     for m, p in oofs.items():
         t = mt.threshold_for_flag_rate(p, flag_rate)
@@ -126,17 +127,16 @@ def plot_threshold_tradeoff(y, p, flag_rate, t_main, t_ks, name):
     fig.tight_layout(); fig.savefig(PLOTS_DIR / "ph1_threshold_tradeoff.png", dpi=150); plt.close(fig)
 
 def score_holdout(ensemble, feats, cat) -> tuple[dict[str, np.ndarray], np.ndarray, np.ndarray]:
+    """Dự đoán holdout: mỗi member = trung bình 5 model fold; rồi ensemble.combine. Gọi đúng một lần."""
     ids = set(load_holdout_ids())
     df = pd.read_parquet(FEATURES_TRAIN_PATH, columns=list(PROTECTED) + feats)
     ho = df[df["SK_ID_CURR"].isin(ids)]
     assert len(ho) == len(ids), (len(ho), len(ids))
     X, y = ho[feats], ho["TARGET"].to_numpy()
-    preds = {}
+    preds = predict_ensemble(ensemble, X)
     for m in ensemble.members:
         folds = sorted(MODELS_DIR.glob(f"ph1_{m}_fold*.joblib"))
-        preds[m] = np.mean([rg.predict_proba(joblib.load(f), X) for f in folds], axis=0)
         print(f"  [holdout] {m}: trung bình {len(folds)} fold", flush=True)
-    preds[ENSEMBLE_NAME] = ensemble.combine(preds)
     return preds, y, ho["SK_ID_CURR"].to_numpy()
 
 def main() -> None:
@@ -168,7 +168,7 @@ def main() -> None:
     plot_score_distribution(oofs[final], y, threshold, final)
     plot_threshold_tradeoff(y, oofs[final], flag_rate, threshold, t_ks, final)
 
-    # holdout
+    # holdout: đúng một lần, chỉ model cuối, ngưỡng đã chốt trên OOF
     feats = json.loads(SELECTED_FEATURES_PATH.read_text())
     from src.ph1_credit_risk.features.builder import CATEGORICAL_COLUMNS_PATH
     cat = [c for c in json.loads(CATEGORICAL_COLUMNS_PATH.read_text()) if c in feats]
@@ -227,7 +227,7 @@ def main() -> None:
         "đường chéo (bin cuối ít mẫu nên nhiễu). Đây là model duy nhất có xác suất dùng được trực tiếp cho stress-test / dashboard.",
         f"- Ở mức chặn {flag_rate:.1%}: precision ~{table.loc[table['model'] == final, 'precision'].iloc[0]:.2f}, recall "
         f"~{table.loc[table['model'] == final, 'recall'].iloc[0]:.2f} — cứ ~5 hồ sơ bị chặn có 1 vỡ nợ thật (nền 8%), "
-        "bắt được ~60% số vỡ nợ.\n",
+        "bắt được ~60% số vỡ nợ. Muốn recall cao hơn phải chặn nhiều hơn (xem plot tradeoff).\n",
         "## Plots\n",
         "- `outputs/plots/ph1_roc.png` — ROC 6 đường (OOF)",
         "- `outputs/plots/ph1_calibration.png` — calibration curve 6 model, 10 bin",
